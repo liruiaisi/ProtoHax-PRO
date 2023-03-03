@@ -5,7 +5,7 @@ import dev.sora.relay.game.GameSession
 import dev.sora.relay.game.entity.EntityPlayer
 import dev.sora.relay.game.entity.EntityPlayerSP
 
-object ModuleAntiBot : CheatModule("AntiBot") {
+object ModuleAntiBot : CheatModule("AntiBot","绕过假人") {
 
     private val modeValue = listValue("Mode", arrayOf("LifeBoat"), "LifeBoat")
 

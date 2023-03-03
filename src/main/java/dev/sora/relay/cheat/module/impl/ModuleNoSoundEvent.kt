@@ -9,7 +9,7 @@ import dev.sora.relay.game.event.EventPacketOutbound
 import dev.sora.relay.game.event.Listen
 
 
-class ModuleNoSoundEvent : CheatModule("NoSoundEvent") {
+class ModuleNoSoundEvent : CheatModule("NoSoundEvent","无声音事件") {
     private val soundeventvalue = listValue("Packet", arrayOf("SoundEvent", "SoundEvent1", "SoundEvent2","ALL"), "SoundEvent")
     @Listen
     fun onPacketOutbound(event: EventPacketOutbound) {

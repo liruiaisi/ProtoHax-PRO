@@ -18,7 +18,7 @@ import dev.sora.relay.game.utils.movement.MovementUtils.isMoving
 import kotlin.math.cos
 import kotlin.math.sin
 
-class ModuleSpeed : CheatModule("Speed") {
+class ModuleSpeed : CheatModule("Speed","速度") {
     private val modeValue = listValue("Mode", arrayOf("Hop", "LowHop", "Legit"), "Hop")
     private val speedValue = floatValue("HopSpeed", 0.39f, 0f, 2f)
     private val lowHopSpeedValue = floatValue("LowHopSpeed", 0.39f, 0f, 2f)

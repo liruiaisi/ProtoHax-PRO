@@ -4,7 +4,7 @@ import dev.sora.relay.cheat.module.CheatModule
 import dev.sora.relay.cheat.value.FloatValue
 import dev.sora.relay.cheat.value.ListValue
 
-class ModuleChatBypass : CheatModule("ChatBypass"){
+class ModuleChatBypass : CheatModule("ChatBypass","聊天绕过"){
     private val modeValue = listValue("BypassMode", arrayOf("Unicode", "RandomUnicode"), "Multi")
     private val chanceValue = floatValue("Chance", 0.4F, 0F, 1F)
     fun getStr(str:String):String{

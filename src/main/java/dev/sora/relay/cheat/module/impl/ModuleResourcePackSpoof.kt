@@ -14,7 +14,7 @@ import java.util.*
 import java.util.zip.ZipFile
 
 
-object ModuleResourcePackSpoof : CheatModule("ResourcePackSpoof") {
+object ModuleResourcePackSpoof : CheatModule("ResourcePackSpoof","材质包欺骗") {
 
     private const val RESOURCE_PACK_CHUNK_SIZE = 8 * 1024
 

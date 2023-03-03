@@ -13,7 +13,7 @@ import dev.sora.relay.game.event.EventPacketOutbound
 import dev.sora.relay.game.event.EventTick
 import dev.sora.relay.game.event.Listen
 
-class ModuleDisabler : CheatModule("Disabler") {
+class ModuleDisabler : CheatModule("Disabler","反作弊减弱") {
 
     private val modeValue = listValue("Mode", arrayOf("Lifeboat","Mineplex","CubeCraft","CPSCancel"), "Lifeboat")
 

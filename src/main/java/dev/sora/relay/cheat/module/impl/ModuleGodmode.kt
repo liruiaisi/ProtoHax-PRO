@@ -10,7 +10,7 @@ import dev.sora.relay.game.event.EventPacketOutbound
 import dev.sora.relay.game.event.Listen
 import dev.sora.relay.game.utils.constants.Effect
 
-class ModuleGodmode : CheatModule("GodMode") {
+class ModuleGodmode : CheatModule("GodMode","无敌模式") {
     private val modeValue = listValue("Mode", arrayOf("HYT"), "HYT")
     @Listen
     fun onPacketOutbound(event: EventPacketOutbound) {

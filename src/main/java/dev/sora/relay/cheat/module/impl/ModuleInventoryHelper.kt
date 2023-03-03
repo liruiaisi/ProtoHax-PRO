@@ -20,7 +20,7 @@ import dev.sora.relay.game.utils.mapping.isBlock
 import dev.sora.relay.game.utils.toVector3i
 import dev.sora.relay.utils.timing.ClickTimer
 
-class ModuleInventoryHelper : CheatModule("InventoryHelper") {
+class ModuleInventoryHelper : CheatModule("InventoryHelper","背包帮助") {
 
     private val stealChestValue = boolValue("StealChest", true)
     private val guiOpenValue = boolValue("GuiOpen", false)

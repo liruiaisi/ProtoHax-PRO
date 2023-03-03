@@ -3,6 +3,7 @@ package dev.sora.relay.cheat.module.impl
 import com.nukkitx.math.vector.Vector3f
 import com.nukkitx.protocol.bedrock.data.Ability
 import com.nukkitx.protocol.bedrock.data.AbilityLayer
+import com.nukkitx.protocol.bedrock.data.PlayerAuthInputData
 import com.nukkitx.protocol.bedrock.data.PlayerPermission
 import com.nukkitx.protocol.bedrock.data.command.CommandPermission
 import com.nukkitx.protocol.bedrock.data.entity.EntityEventType
@@ -12,12 +13,15 @@ import dev.sora.relay.game.event.EventPacketInbound
 import dev.sora.relay.game.event.EventPacketOutbound
 import dev.sora.relay.game.event.EventTick
 import dev.sora.relay.game.event.Listen
+import dev.sora.relay.game.utils.movement.MovementUtils.isMoving
 import kotlin.math.*
 
-class ModuleFly : CheatModule("Fly") {
+class ModuleFly : CheatModule("Fly","飞行") {
 
-    private val modeValue = listValue("Mode", arrayOf("Vanilla", "Jetpack", "Mineplex"), "Vanilla")
+    private val modeValue = listValue("Mode", arrayOf("Vanilla", "Jetpack", "Mineplex","Motion"), "Vanilla")
     private val speedValue = floatValue("Speed", 1.5f, 0.1f, 5f)
+    private val motionYValue = floatValue("MotionY", 0.32f, 0f, 3f)
+    private val motionXZValue = floatValue("MotionXZ", 0.38f, 0f, 3f)
     private val mineplexDirectValue = boolValue("MineplexDirect", false)
     private val mineplexMotionValue = boolValue("MineplexMotion", false)
     private var launchY = 0.0
@@ -100,6 +104,17 @@ class ModuleFly : CheatModule("Fly") {
 
     @Listen
     fun onPacketOutbound(event: EventPacketOutbound) {
+        when{
+            modeValue.get() == "Motion" -> {
+                if (event.packet is PlayerAuthInputPacket && isMoving(mc)) strafe(
+                    motionXZValue.get(),
+                    if (mc.thePlayer.inputData.contains(PlayerAuthInputData.JUMPING)) motionYValue.get() else if (mc.thePlayer.inputData.contains(
+                            PlayerAuthInputData.SNEAKING
+                        )
+                    ) -motionYValue.get() else 0.01f
+                )
+            }
+        }
         if (modeValue.get() == "Mineplex") {
             if (event.packet is RequestAbilityPacket && event.packet.ability == Ability.FLYING) {
                 canFly = !canFly
@@ -135,5 +150,12 @@ class ModuleFly : CheatModule("Fly") {
                 event.cancel()
             }
         }
+    }
+    private fun strafe(speed: Float, motionY: Float) {
+        val yaw = direction
+        session.netSession.inboundPacket(SetEntityMotionPacket().apply {
+            runtimeEntityId = mc.thePlayer.entityId
+            motion = Vector3f.from(-sin(yaw) * speed, motionY.toDouble(), cos(yaw) * speed)
+        })
     }
 }

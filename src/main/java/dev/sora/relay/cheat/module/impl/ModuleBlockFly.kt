@@ -19,7 +19,7 @@ import dev.sora.relay.game.utils.toRotation
 import dev.sora.relay.game.utils.toVector3f
 import dev.sora.relay.game.world.WorldClient
 
-class ModuleBlockFly : CheatModule("BlockFly") {
+class ModuleBlockFly : CheatModule("BlockFly","方块飞行") {
 
     private val swingValue = listValue("Swing", arrayOf("Both", "Client", "Server", "None"), "Server")
     private val adaptiveBlockIdValue = boolValue("AdaptiveBlockId", false)

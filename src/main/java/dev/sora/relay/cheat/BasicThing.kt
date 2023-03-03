@@ -12,8 +12,6 @@ abstract class BasicThing {
     lateinit var session: GameSession
     lateinit var mc: GameSession
     lateinit var mm: ModuleManager
-    lateinit var eps: EntityPlayerSP
-lateinit var spammer: ModuleSpammer
 
     protected fun chat(msg: String) {
         chat(session, msg)

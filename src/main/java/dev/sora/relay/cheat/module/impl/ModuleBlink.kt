@@ -5,7 +5,7 @@ import dev.sora.relay.cheat.module.CheatModule
 import dev.sora.relay.game.event.EventPacketOutbound
 import dev.sora.relay.game.event.Listen
 
-class ModuleBlink : CheatModule("Blink") {
+class ModuleBlink : CheatModule("Blink","瞬移") {
 
     private val packetList = mutableListOf<BedrockPacket>()
 

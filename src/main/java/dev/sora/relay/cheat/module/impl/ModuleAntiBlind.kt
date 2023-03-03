@@ -7,7 +7,7 @@ import dev.sora.relay.game.event.EventTick
 import dev.sora.relay.game.event.Listen
 import dev.sora.relay.game.utils.constants.Effect
 
-class ModuleAntiBlind : CheatModule("AntiBlind") {
+class ModuleAntiBlind : CheatModule("AntiBlind","反药水效果") {
 
     private val nightVisionValue = boolValue("NightVision", true)
     private val removeBadEffectsValue = boolValue("RemoveBadEffects", true)

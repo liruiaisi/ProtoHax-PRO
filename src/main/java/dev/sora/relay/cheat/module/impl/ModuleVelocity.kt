@@ -5,7 +5,7 @@ import dev.sora.relay.cheat.module.CheatModule
 import dev.sora.relay.game.event.EventPacketInbound
 import dev.sora.relay.game.event.Listen
 
-class ModuleVelocity : CheatModule("Velocity") {
+class ModuleVelocity : CheatModule("Velocity","无击退") {
 
     private val modeValue = listValue("Mode", arrayOf("Simple","Vanilla"), "Vanilla")
     private val horizontalValue = floatValue("Horizontal", 0f, 0f, 1f)

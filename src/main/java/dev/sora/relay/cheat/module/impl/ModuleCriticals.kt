@@ -8,7 +8,7 @@ import dev.sora.relay.cheat.value.ListValue
 import dev.sora.relay.game.event.Listen
 import dev.sora.relay.game.event.EventPacketOutbound
 
-class ModuleCriticals : CheatModule("Criticals") {
+class ModuleCriticals : CheatModule("Criticals","刀刀暴击") {
     private val modeValue = listValue("Mode", arrayOf("MovePacket"), "MovePacket")
 
     @Listen

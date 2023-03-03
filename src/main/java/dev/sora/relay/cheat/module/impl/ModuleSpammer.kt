@@ -8,7 +8,7 @@ import dev.sora.relay.utils.getRandomString
 import dev.sora.relay.utils.timing.TheTimer
 import kotlin.random.Random
 
-class ModuleSpammer : CheatModule("Spammer") {
+class ModuleSpammer : CheatModule("Spammer","刷屏") {
 
     private val delayValue = intValue("Delay", 5000, 500, 10000)
     val messageValue = stringValue("Message", "[!] I'm using ProtoHax t<dot>me/protohax")

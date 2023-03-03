@@ -9,7 +9,7 @@ import dev.sora.relay.game.event.EventTick
 import dev.sora.relay.game.event.Listen
 
 
-class ModuleNoFall : CheatModule("NoFall") {
+class ModuleNoFall : CheatModule("NoFall","无摔落伤害") {
 
     private val modeValue = listValue("Mode", arrayOf("OnGround","AwayNoGround","Nukkit","CubeCraft"), "OnGround")
 

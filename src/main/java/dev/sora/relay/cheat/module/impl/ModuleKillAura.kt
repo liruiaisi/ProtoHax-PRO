@@ -15,7 +15,7 @@ import dev.sora.relay.game.utils.toRotation
 import dev.sora.relay.utils.timing.ClickTimer
 import kotlin.math.pow
 
-class ModuleKillAura : CheatModule("KillAura") {
+class ModuleKillAura : CheatModule("KillAura","自动攻击") {
 
     private val cpsValue = intValue("CPS", 7, 1, 20)
     private val rangeValue = floatValue("Range", 3.7f, 2f, 7f)

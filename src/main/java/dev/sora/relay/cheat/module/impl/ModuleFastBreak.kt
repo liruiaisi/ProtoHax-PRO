@@ -6,7 +6,7 @@ import dev.sora.relay.game.event.EventTick
 import dev.sora.relay.game.event.Listen
 import dev.sora.relay.game.utils.constants.Effect
 
-class ModuleFastBreak : CheatModule("FastBreak") {
+class ModuleFastBreak : CheatModule("FastBreak","快速挖掘") {
 
     private val amplifierValue = intValue("Level", 5, 1, 128)
 

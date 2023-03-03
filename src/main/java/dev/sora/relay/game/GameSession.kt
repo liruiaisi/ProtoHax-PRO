@@ -2,6 +2,8 @@ package dev.sora.relay.game
 
 import com.nukkitx.network.util.DisconnectReason
 import com.nukkitx.protocol.bedrock.BedrockPacket
+import com.nukkitx.protocol.bedrock.data.AuthoritativeMovementMode
+import com.nukkitx.protocol.bedrock.data.SyncedPlayerMovementSettings
 import com.nukkitx.protocol.bedrock.packet.LoginPacket
 import com.nukkitx.protocol.bedrock.packet.StartGamePacket
 import dev.sora.relay.RakNetRelaySession
@@ -9,6 +11,7 @@ import dev.sora.relay.RakNetRelaySessionListener
 import dev.sora.relay.game.entity.EntityPlayerSP
 import dev.sora.relay.game.event.*
 import dev.sora.relay.game.management.BlobCacheManager
+import dev.sora.relay.game.utils.TimerUtil
 import dev.sora.relay.game.utils.mapping.*
 import dev.sora.relay.game.world.WorldClient
 
@@ -18,7 +21,8 @@ class GameSession : RakNetRelaySessionListener.PacketListener {
     val theWorld = WorldClient(this)
 
     val cacheManager = BlobCacheManager()
-
+    var cnMode = false
+    private val hookedTimer: TimerUtil = TimerUtil()
     val eventManager = EventManager()
 
     lateinit var netSession: RakNetRelaySession
@@ -48,7 +52,21 @@ class GameSession : RakNetRelaySessionListener.PacketListener {
         if (event.isCanceled()) {
             return false
         }
-
+        if (packet is StartGamePacket) {
+            if (cnMode) {
+                event.cancel()
+                packet.playerMovementSettings = SyncedPlayerMovementSettings().apply {
+                    movementMode = AuthoritativeMovementMode.SERVER
+                    rewindHistorySize = 0
+                    isServerAuthoritativeBlockBreaking = true
+                }
+                packet.authoritativeMovementMode = AuthoritativeMovementMode.SERVER
+                println("Hooked$packet")
+                hookedTimer.reset()
+                netSession.inboundPacket(packet)
+                return false
+            }
+        }
         if (packet is StartGamePacket) {
             inventoriesServerAuthoritative = packet.isInventoriesServerAuthoritative
         }

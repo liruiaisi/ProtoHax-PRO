@@ -9,7 +9,7 @@ import dev.sora.relay.game.event.EventPacketInbound
 import dev.sora.relay.game.event.Listen
 import dev.sora.relay.utils.RandomUtils
 
-class ModuleNoChat : CheatModule("NoChat") {
+class ModuleNoChat : CheatModule("NoChat","无聊天") {
 
     private val modeValue = listValue("Mode", arrayOf("All","JustPlayer"), "JustPlayer")
     @Listen

@@ -6,7 +6,7 @@ import dev.sora.relay.game.event.Listen
 import dev.sora.relay.game.event.EventPacketInbound
 import dev.sora.relay.game.event.EventPacketOutbound
 
-class ModulePacketLogger : CheatModule("PacketLogger") {
+class ModulePacketLogger : CheatModule("PacketLogger","数据包记录") {
     private val modeValue = listValue("Mode", arrayOf("In","Out", "Both"), "Both")
     @Listen
     fun onPacketInbound(event: EventPacketInbound) {

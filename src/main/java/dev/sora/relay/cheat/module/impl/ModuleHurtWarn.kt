@@ -1,14 +1,12 @@
 package dev.sora.relay.cheat.module.impl
 
 import com.nukkitx.protocol.bedrock.data.entity.EntityEventType
-import com.nukkitx.protocol.bedrock.packet.AnimatePacket
 import com.nukkitx.protocol.bedrock.packet.EntityEventPacket
 import dev.sora.relay.cheat.module.CheatModule
-import dev.sora.relay.cheat.value.BoolValue
 import dev.sora.relay.game.event.EventPacketInbound
 import dev.sora.relay.game.event.Listen
 
-class ModuleNoHurt : CheatModule("NoHurt") {
+class ModuleHurtWarn : CheatModule("HurtWarn","伤害提醒") {
 
     private val messageValue = boolValue("Message", true)
     @Listen

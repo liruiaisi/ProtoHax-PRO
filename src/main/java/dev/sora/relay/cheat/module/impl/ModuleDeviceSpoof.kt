@@ -14,7 +14,7 @@ import io.netty.util.AsciiString
 import java.util.*
 import kotlin.random.Random
 
-class ModuleDeviceSpoof : CheatModule("DeviceSpoof") {
+class ModuleDeviceSpoof : CheatModule("DeviceSpoof","设备伪装") {
 
     private val deviceIdValue = boolValue("DeviceId", true)
     private val platformValue = boolValue("Platform", true)

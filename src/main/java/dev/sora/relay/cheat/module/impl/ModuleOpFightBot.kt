@@ -9,7 +9,7 @@ import kotlin.math.atan2
 import kotlin.math.cos
 import kotlin.math.sin
 
-class ModuleOpFightBot : CheatModule("OPFightBot") {
+class ModuleOpFightBot : CheatModule("OPFightBot","自动追踪") {
 
     private val modeValue = listValue("Mode", arrayOf("Random", "Strafe", "Back"), "Random")
     private val rangeValue = floatValue("Range", 1.5f, 1.5f, 4f)

@@ -5,7 +5,7 @@ import dev.sora.relay.cheat.value.Value
 import dev.sora.relay.cheat.value.ValueHolder
 import dev.sora.relay.game.event.Listener
 
-abstract class CheatModule(val name: String,
+abstract class CheatModule(val name: String,val cn:String=name,
                            val defaultOn: Boolean = false,
                            val canToggle: Boolean = true) : BasicThing(), Listener, ValueHolder {
 
