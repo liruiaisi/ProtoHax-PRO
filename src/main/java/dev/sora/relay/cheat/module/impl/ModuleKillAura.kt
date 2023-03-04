@@ -17,7 +17,7 @@ import kotlin.math.pow
 
 class ModuleKillAura : CheatModule("KillAura","自动攻击") {
 
-    private val cpsValue = intValue("CPS", 7, 1, 20)
+    private val cpsValue = intValue("CPS", 7, 1, 50)
     private val rangeValue = floatValue("Range", 3.7f, 2f, 7f)
     private val attackModeValue = listValue("AttackMode", arrayOf("Single", "Multi"), "Single")
     private val rotationModeValue = listValue("RotationMode", arrayOf("Lock", "None","Slient"), "Lock")
@@ -38,7 +38,7 @@ class ModuleKillAura : CheatModule("KillAura","自动攻击") {
     }
     @Listen
     fun onTick(event: EventTick) {
-        if (cpsValue.get() < 20 && !clickTimer.canClick())
+        if (cpsValue.get() < 50 && !clickTimer.canClick())
             return
 
         val session = event.session
